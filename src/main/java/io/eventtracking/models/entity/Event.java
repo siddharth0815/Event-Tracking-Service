@@ -2,6 +2,7 @@ package io.eventtracking.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.eventtracking.models.request.EventCreationRequest;
 import java.time.ZonedDateTime;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
@@ -50,4 +51,10 @@ public class Event {
   @UpdateTimestamp
   private ZonedDateTime modifiedAt;
 
+  public static Event from(EventCreationRequest request) {
+    return Event.builder()
+        .eventName(request.getName())
+        .contentJson(request.getProperties())
+        .build();
+  }
 }
