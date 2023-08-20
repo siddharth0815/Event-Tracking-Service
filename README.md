@@ -1,10 +1,18 @@
 # Event-Tracking-Service
 
 ## Steps to setup event-tracking-service in local
- - Clone the event-tracking-service repo.</li>
- - Install *JDK-8* and *maven-3.6.3*</li> 
- - Build the jar using command *mvn clean install*</li>
- - Run the jar using command *java -jar event-tracking-service.jar*</li> 
+ - Clone the event-tracking-service repo.
+ - Install [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and [Maven 3](https://maven.apache.org)
+ - Install [Postgresql 13](https://www.postgresql.org/download/)
+ - Start Postgres Server on Local
+ - Create Database with following details
+   ```
+   database_name = postgres
+   user_name = postgres
+   password = 
+   ```
+ - Build the jar using command *mvn clean install*
+ - Run the jar using command *java -jar event-tracking-service.jar*
 
 ## Used case and definitions
 https://www.google.com/url?q=https://rudderstacks.notion.site/Full-Stack-SDE-2-THA-25f2da47127944fd971296b126fad5de&source=gmail&ust=1692442055264000&usg=AOvVaw2H9ggQ45lYx9UHh2zl6lId
