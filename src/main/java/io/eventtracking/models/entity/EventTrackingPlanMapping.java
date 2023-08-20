@@ -3,6 +3,7 @@ package io.eventtracking.models.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import io.eventtracking.models.request.TrackingPlanCreationRequest;
 import java.util.Map;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -36,9 +37,17 @@ public class EventTrackingPlanMapping {
   private UUID id;
   private String planId;
   private String eventId;
+  private String eventDescription;
   @Type(type = "jsonb")
-  @Column(columnDefinition = "jsonb default '{}'::jsonb", nullable = false)
-  @NotNull(message = "Posting Category Template cannot be null")
+  @Column(columnDefinition = "jsonb default '{}'::jsonb")
   private Map<String, Object> contentJson;
+
+  public static EventTrackingPlanMapping from(String planId, Event event){
+    return EventTrackingPlanMapping.builder()
+        .planId(planId)
+        .eventId(event.getEventName())
+        .eventDescription(event.getDescription())
+        .build();
+  }
 
 }

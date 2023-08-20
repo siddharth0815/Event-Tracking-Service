@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class EventCreationRequest {
 
   private String name;
+  private String description;
   private Map<String, Object> properties;
 
 

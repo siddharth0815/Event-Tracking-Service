@@ -4,7 +4,6 @@ import io.eventtracking.models.entity.Event;
 import io.eventtracking.models.request.EventCreationRequest;
 import io.eventtracking.models.request.EventUpdationRequest;
 import io.eventtracking.service.EventService;
-import java.util.concurrent.CompletionStage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;

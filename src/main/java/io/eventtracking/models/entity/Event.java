@@ -33,9 +33,10 @@ public class Event {
   @Id
   private String eventName;
 
+  private String description;
+
   @Type(type = "jsonb")
-  @Column(columnDefinition = "jsonb default '{}'::jsonb", nullable = false)
-  @NotNull(message = "Posting Category Template cannot be null")
+  @Column(columnDefinition = "jsonb default '{}'::jsonb")
   private Map<String, Object> contentJson;
 
   @Type(type = "jsonb")
@@ -54,6 +55,7 @@ public class Event {
   public static Event from(EventCreationRequest request) {
     return Event.builder()
         .eventName(request.getName())
+        .description(request.getDescription())
         .contentJson(request.getProperties())
         .build();
   }

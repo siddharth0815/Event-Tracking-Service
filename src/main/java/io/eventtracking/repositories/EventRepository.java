@@ -1,7 +1,6 @@
 package io.eventtracking.repositories;
 
 import io.eventtracking.models.entity.Event;
-import java.sql.Timestamp;
 import java.util.Map;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
