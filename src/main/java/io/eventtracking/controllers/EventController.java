@@ -53,6 +53,4 @@ public class EventController {
       @PathVariable("trackingPlanId") String trackingPlanId) {
     eventService.linkPlanAndEvent(eventId, trackingPlanId);
   }
-
-
 }
