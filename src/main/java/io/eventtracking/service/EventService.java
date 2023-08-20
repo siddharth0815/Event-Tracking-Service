@@ -7,8 +7,11 @@ import io.eventtracking.models.request.EventUpdationRequest;
 public interface EventService {
 
   EventCreationRequest createEvent(EventCreationRequest request);
+
   Event getEventById(String eventId);
+
   void updateEvent(String eventId, EventUpdationRequest request);
+
   void linkPlanAndEvent(String eventId, String trackingPlanId);
 
 }
