@@ -1,5 +1,7 @@
 package io.eventtracking.models.request;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import io.eventtracking.models.entity.Event;
 import io.eventtracking.models.entity.EventTrackingPlanMapping;
 import java.util.ArrayList;
@@ -15,7 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 public class TrackingPlanCreationRequest {
+    @JsonInclude(Include.NON_NULL)
     private String sourceName;
+    @JsonInclude(Include.NON_NULL)
     private String sourceId;
     private String displayName;
     private List<Event> events;

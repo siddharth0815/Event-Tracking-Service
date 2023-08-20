@@ -2,6 +2,7 @@ package io.eventtracking.controllers;
 
 import io.eventtracking.models.request.TrackingPlanCreationRequest;
 import io.eventtracking.service.TrackingPlanService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/trackingPlan")
+@RequestMapping(value = "/trackingPlans")
 public class TrackingPlanController {
 
   private final TrackingPlanService trackingPlanService;
@@ -33,6 +34,13 @@ public class TrackingPlanController {
       @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
     return trackingPlanService.getTrackingPlan(trackingPlanId, pageNumber, pageSize);
   }
+
+
+  @GetMapping
+  public List<TrackingPlanCreationRequest> getAllTrackingPlans() {
+    return trackingPlanService.getAllTrackingPlans();
+  }
+
 
 
 }

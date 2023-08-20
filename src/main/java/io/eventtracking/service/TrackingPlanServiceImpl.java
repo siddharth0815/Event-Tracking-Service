@@ -1,10 +1,15 @@
 package io.eventtracking.service;
 
 import io.eventtracking.models.entity.EventTrackingPlanMapping;
+import io.eventtracking.models.entity.TrackingPlan;
 import io.eventtracking.models.request.TrackingPlanCreationRequest;
 import io.eventtracking.repositories.EventTrackingPlanMappingRepository;
+import io.eventtracking.repositories.TrackingPlanRepository;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,7 +42,18 @@ public class TrackingPlanServiceImpl implements TrackingPlanService {
     return TrackingPlanCreationRequest.from(trackingPlan, eventTrackingPlanMappings);
   }
 
-
-
+  @Override
+  public List<TrackingPlanCreationRequest> getAllTrackingPlans() {
+    List<TrackingPlanCreationRequest> apiResponse = new ArrayList<>();
+    List<EventTrackingPlanMapping> eventTrackingPlanMappings =
+        eventTrackingPlanMappingRepository.findAll();
+    eventTrackingPlanMappings.stream()
+        .collect(Collectors.groupingBy(mapping -> mapping.getPlanId()))
+        .forEach((key,value) -> {
+          TrackingPlanCreationRequest request = TrackingPlanCreationRequest.from(key, Optional.of(value));
+          apiResponse.add(request);
+        });
+    return apiResponse;
+  }
 
 }
