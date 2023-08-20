@@ -3,6 +3,7 @@ package io.eventtracking.models.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import io.eventtracking.models.request.TrackingPlanCreationRequest;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -41,5 +42,13 @@ public class TrackingPlan {
   @Column(nullable = false)
   @UpdateTimestamp
   private ZonedDateTime modifiedAt;
+
+  public static TrackingPlan from(TrackingPlanCreationRequest request){
+    return TrackingPlan.builder()
+        .planName(request.getDisplayName())
+        .sourceId(request.getSourceId())
+        .sourceName(request.getSourceName())
+        .build();
+  }
 
 }
